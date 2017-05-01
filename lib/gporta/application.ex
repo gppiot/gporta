@@ -8,6 +8,7 @@ defmodule Gporta.Application do
 
     # Define workers and child supervisors to be supervised
     children = [
+      supervisor(Gporta.Transport.Websocket, [])
       # worker(Gporta.Worker, [arg1, arg2, arg3]),
     ]
 

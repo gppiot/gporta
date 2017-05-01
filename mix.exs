@@ -31,7 +31,8 @@ defmodule Gporta.Mixfile do
   # applications which could cause the host to fail. Because of this, we only
   # invoke Gporta.start/2 when running on a target.
   def application("host") do
-    [extra_applications: [:logger]]
+    [mod: {Gporta.Application, []},
+      extra_applications: [:logger]]
   end
   def application(_target) do
     [mod: {Gporta.Application, []},
@@ -48,7 +49,11 @@ defmodule Gporta.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   def deps do
-    [{:nerves, "~> 0.5.0", runtime: false}] ++
+    [
+      {:nerves, "~> 0.5.0", runtime: false},
+      {:phoenix_channel_client, "~> 0.1.0"},
+      {:poison, "~> 3.1"},
+    ] ++
     deps(@target)
   end
 
