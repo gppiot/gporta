@@ -10,3 +10,7 @@ use Mix.Config
 # Uncomment to use target specific configurations
 
 # import_config "#{Mix.Project.config[:target]}.exs"
+
+config :gporta, Gporta.Transport.Websocket.Socket,
+  url: "ws://localhost:4000/socket/websocket",
+  serializer: Poison
